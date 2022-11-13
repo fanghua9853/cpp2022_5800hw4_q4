@@ -60,6 +60,7 @@ REFERENCES records.instrument (name)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.sounds ADD CONSTRAINT instrument_sounds_fk
 FOREIGN KEY (name)
 REFERENCES records.instrument (name)
@@ -73,42 +74,49 @@ REFERENCES records.address (addressID)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.plays ADD CONSTRAINT musician_plays_fk
 FOREIGN KEY (ssn)
 REFERENCES records.musician (ssn)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.performs ADD CONSTRAINT musician_performs_fk
 FOREIGN KEY (ssn)
 REFERENCES records.musician (ssn)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.song ADD CONSTRAINT musician_song_fk
 FOREIGN KEY (ssn_author)
 REFERENCES records.musician (ssn)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.album ADD CONSTRAINT musician_album_fk
 FOREIGN KEY (ssn_producer)
 REFERENCES records.musician (ssn)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.song ADD CONSTRAINT album_song_fk
 FOREIGN KEY (albumID)
 REFERENCES records.album (albumID)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.sounds ADD CONSTRAINT song_sounds_fk
 FOREIGN KEY (title)
 REFERENCES records.song (title)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
 ALTER TABLE records.performs ADD CONSTRAINT song_performs_fk
 FOREIGN KEY (title)
 REFERENCES records.song (title)
